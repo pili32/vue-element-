@@ -41,7 +41,7 @@ export default {
         return{
             navaList:[
             ],
-            pathUrl:'',
+            pathUrl:"",
         }
     },
     created(){
