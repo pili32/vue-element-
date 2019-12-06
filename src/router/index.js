@@ -25,7 +25,7 @@ export default new Router({
       component:layout,
       children:[{
         path:'one',
-        name:'这是我第一个页面',
+        name:'第一个页面',
         component:one,
         meta: {
           title: "one",
@@ -34,7 +34,7 @@ export default new Router({
         //在这里将定义需要菜单显示的路由，并在menus.vue中去到
         children:[{
           path:'four',
-          name:'这是我第1.1个页面',
+          name:'第1.1个页面',
           component:four,
           meta:{
             title:'',
@@ -45,7 +45,7 @@ export default new Router({
       },
       {
         path:'two',
-        name:'这是我第二个页面',
+        name:'第二个页面',
         component:two,
         meta: {
           title: "two",
@@ -55,7 +55,7 @@ export default new Router({
       },
       {
         path:'three',
-        name:'这是我第三个页面',
+        name:'第三个页面',
         component:three,
         meta: {
           title: "three",

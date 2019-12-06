@@ -6,20 +6,20 @@
       </el-col>
     </el-row>
     <el-row class="layout_list">
-      <el-col :span="4" style="height:100%;w">
+      <el-col :span="4" style="height:100%;width:200px">
         <div class="layout_menu">
           <menus></menus>
         </div>
       </el-col>
       <el-col :span="20" style="height:100%">
         <div class="layout_content">
-                <router-view/>
+          <!-- 在这里放入router-view:放入子组件，这样对应的右边内容就会出来 -->
+          <router-view/>
         </div>
       </el-col>
     </el-row>
   </el-row>
 </template>
-
 <style >
 .layout_wapper {
   /* position: relative; */

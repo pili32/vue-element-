@@ -32,7 +32,6 @@
     </el-menu>
     </div>
 </template>
-
 <script> 
 //取出router.js
 import  router from '@/router'
