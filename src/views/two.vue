@@ -1,5 +1,7 @@
 <template>
-  <div>我是二级菜单 案例/table案例/table2页面</div>
+  <!-- <div>我是二级菜单 案例/table案例/table2页面</div> -->
+      <router-view></router-view>
+
 </template>
 <script>
 export default {

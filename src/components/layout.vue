@@ -20,7 +20,7 @@
     </el-row>
   </el-row>
 </template>
-<style >
+<style  >
 .layout_wapper {
   /* position: relative; */
   width: 100%;
@@ -45,8 +45,11 @@
 }
 a{
 text-decoration:none;
-color:#333;
+color:#ddd;
 }
+ a:hover{
+color:#fff
+ }
 
 </style>
 
