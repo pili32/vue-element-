@@ -6,7 +6,7 @@
       </el-col>
     </el-row>
     <el-row class="layout_list">
-      <el-col :span="4" style="height:100%;width:200px">
+      <el-col :span="4" style="height:100%;">
         <div class="layout_menu">
           <menus></menus>
         </div>
@@ -42,12 +42,12 @@
     /* width: 70%; */
     height: 100%;
 
-    background: #F56C6C
 }
 a{
 text-decoration:none;
 color:#333;
 }
+
 </style>
 
 <script>

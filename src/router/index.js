@@ -7,6 +7,8 @@ import one from '@/views/one'
 import three from '@/views/three'
 import two from '@/views/two'
 import four from '@/views/four'
+import five from '@/views/five'
+
 
 
 
@@ -51,7 +53,16 @@ export default new Router({
           title: "two",
           icon: "el-icon-service",
         },
-        
+        children:[{
+          path:'five',
+          name:'第二个的子页面',
+          component:five,
+          meta:{
+            title:'five',
+            icon: "el-icon-service",
+
+          }
+        }]
       },
       {
         path:'three',

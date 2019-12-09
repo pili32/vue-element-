@@ -10,7 +10,7 @@
             @open="handleOpen"
             @close="handleClose"
         >
-        <template v-for="(item,index) in navaList">
+        <template v-for="(item,index) in navaList" v-if="item">
             <!-- el-submenu   这里必须将菜单栏放进去 -->
             <el-submenu :index='pathUrl+"/"+item.path'>
                 <template slot='title'>
@@ -19,7 +19,7 @@
                     <span>{{item.name}}</span>
                     </router-link>
                 </template>
-                <template v-for='(itemChildren,indexChildren) in item.children'>
+                <template v-for='(itemChildren,indexChildren) in item.children' v-if="itemChildren">
                       <router-link :to="itemChildren.path">
                             <el-menu-item :index="item.path+'/'+itemChildren.path">
                             <i v-if="itemChildren.meta.icon" :class="itemChildren.meta.icon"></i>
@@ -68,5 +68,17 @@ export default {
 </script>
 
 <style >
+/* .menu_list .el-menu {
+  color: #333;
+  transition: width .28s;
+  width: 180px !important;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1001;
+  background-color: rgb(48, 65, 86);
+} */
 
 </style>
