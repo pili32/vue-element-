@@ -5,6 +5,10 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import echarts from 'echarts'
+import BaiduMap from 'vue-baidu-map'
+import store from './store'
+
 import {
   Pagination,
   Dialog,
@@ -168,6 +172,12 @@ Vue.prototype.$confirm = MessageBox.confirm;
 Vue.prototype.$prompt = MessageBox.prompt;
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
+Vue.prototype.$echarts = echarts
+ 
+Vue.use(BaiduMap, {
+  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
+  ak: 'YYUGh7Lm82GbDKXWCbP0QyBap7r4tgfz'
+});
 
 Vue.use(ElementUI)
 
@@ -178,6 +188,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

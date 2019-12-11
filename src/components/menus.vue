@@ -69,6 +69,11 @@ export default {
 </script>
 
 <style  >
-
+ul li{
+    background: red
+}
+.el-menu-item .is-active{
+    background: red
+}
 
 </style>

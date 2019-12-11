@@ -7,7 +7,7 @@ import one from '@/views/one'
 import three from '@/views/three'
 import two from '@/views/two'
 import four from '@/views/four'
-import five from '@/views/five'
+import baiDuMap from '@/views/baiDuMap'
 
 
 
@@ -54,11 +54,11 @@ export default new Router({
           icon: "el-icon-service",
         },
         children:[{
-          path:'five',
-          name:'第二个的子页面',
-          component:five,
+          path:'baiDuMap',
+          name:'百度地图',
+          component:baiDuMap,
           meta:{
-            title:'five',
+            title:'baiDuMap',
             icon: "el-icon-service",
 
           }
