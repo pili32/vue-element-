@@ -35,7 +35,7 @@ export default {
        this.formModel.content  = ''
        localStorage.setItem("loginUser",loginUser)
        this.$router.push({
-         path:'./layout'
+         path:'./one/echart'
        })
       }else{
         this.formModel.content ="输入的用户名或密码错误"

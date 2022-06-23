@@ -1,63 +1,69 @@
 <template>
     <div class="menu_list">
         <el-menu
-          default-active="2"
-          router mode="vertical"
-            class="el-menu-vertical-demo"
-            background-color="#545c64"
-            text-color="#ddd"
-            active-text-color="#fff"
+            default-active="2"
+            router
+            mode="vertical"
             @open="handleOpen"
             @close="handleClose"
             collapse-transition
+            :unique-opened='uniqueOpened'
         >
-        <template v-for="(item,index) in navaList" v-if="item">
-            <!-- el-submenu   这里必须将菜单栏放进去 -->
-            <el-submenu :index='pathUrl+"/"+item.path'>
-                <template slot='title'>
-                    <router-link :to='pathUrl+"/"+item.path'>
-                    <i :class='item.meta.icon'></i>
-                    <span>{{item.name}}</span>
-                    </router-link>
-                </template>
-                <template v-for='(itemChildren,indexChildren) in item.children' v-if="itemChildren">
-                      <router-link :to="itemChildren.path">
-                            <el-menu-item :index="item.path+'/'+itemChildren.path">
-                            <i v-if="itemChildren.meta.icon" :class="itemChildren.meta.icon"></i>
-                            {{itemChildren.name}}
-                    </el-menu-item>
-                </router-link>
+        <div v-for="(item,index) in navaList"  :key="index" >
+            <el-submenu 
+                :key="item.name"
+                :index="item.path"
+            >
+            <template slot="title">
+                <i class="iconfont" :class="item.meta.icon"></i>
+                <span class="sub-title">{{ item.name }}</span>
+            </template>
+             <template v-for='(itemChildren,indexChildren) in item.children'>
+                <el-menu-item
+                    :key="indexChildren"
+                    :index="itemChildren.path"
+                    style="padding-left: 16px"
+                    class="sub-menu"
+                >
+                    <i class="iconfont" :class="itemChildren.icon" style="margin-right:10px;font-weight:400"></i>
+                    {{ itemChildren.name }}
+                </el-menu-item>
                 </template>
             </el-submenu>
-        </template>
+        </div>
     </el-menu>
     </div>
 </template>
 <script> 
 //取出router.js
-import  router from '@/router'
+import { mapActions } from 'vuex'
+// import  router from '@/router'
 export default {
     data(){
         return{
             navaList:[
             ],
+            uniqueOpened:true,
             pathUrl:"",
+            store:this.$store.state.routerMenu
         }
     },
     created(){
-        console.log(router)
-        //取出路由中需要的路径
-        this.pathUrl = router.options.routes[1].path
-        console.log(this.pathUrl)
-         let routers =router.options.routes[1].children
-        this.navaList = routers
+        this.navaList = this.store[1].children
         console.log( this.navaList )
 
     },
+    setMenu(item){
+        console.log(item)
+    },
+    selectMenu(index,indexPath){
+    },
     methods:{
-        handleOpen(key ,keyPath){
-            console.log(key)
-            console.log(keyPath)
+        handleOpen(key){
+            const item = this.store[1].children.filter( e => e.path === key)
+            let result =  this.$filterMenu(key,item[0])
+            this.$store.dispatch('setBreadNav', result)
+ 
 
         },
         handleClose(){
@@ -69,11 +75,11 @@ export default {
 </script>
 
 <style  >
-ul li{
+/* ul li{
     background: red
 }
 .el-menu-item .is-active{
     background: red
-}
+} */
 
 </style>

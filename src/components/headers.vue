@@ -1,5 +1,6 @@
 <template>
     <div class="app_header">
+        <color-picker></color-picker>
        <el-button type="primary" style="margin-right:100px;" @click="outThere">退出</el-button>
     </div>
 </template>
@@ -17,12 +18,18 @@
 
 </style>
 
+
 <script>
+import ColorPicker from "@/layout/colorpicker/index";
+
 export default {
     data(){
         return{
            
         }
+    },
+    components:{
+        ColorPicker
     },
     methods:{
         outThere(){

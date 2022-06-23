@@ -7,16 +7,21 @@ const store = new Vuex.Store({
     state:{
       count:0,
       data:{},
-      userInfo:{}
+      userInfo:{},
+      routerMenu:[],
+      breadNav:[],
 
     },
     mutations: {
         //这里是set方法
         baiduAddress(state,data){
-            console.log(data)
             state.userInfo = data
-            console.log( state.userInfo )
-
+        },
+        saveRouterMenu(state,data){
+          state.routerMenu = data
+        },
+        saveBreadNav(state,data) {
+          state.breadNav = data
         }
     
       },
@@ -24,10 +29,11 @@ const store = new Vuex.Store({
         //这里是get方法   
 
     },
+    // 在这里进行数据处理
     actions: {
-    
-        //这个部分我暂时用不上
-    
+      setBreadNav({commit},state){
+        commit("saveBreadNav",state)
+      }
     },
     modules: {
         //这里是我自己理解的是为了给全局变量分组，所以需要写提前声明其他store文件，然后引入这里
