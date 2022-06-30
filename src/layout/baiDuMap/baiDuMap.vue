@@ -21,7 +21,7 @@
 </style>
 
 <script>
-import baiDuMap from "@/views/baduicomponent.vue";
+import baiDuMap from "@/components/baduicomponent.vue";
 export default {
   data() {
     return {

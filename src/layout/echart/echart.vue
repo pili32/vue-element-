@@ -26,15 +26,15 @@ export default {
       // 指定图表的配置项和数据
       let option = {
         // color:this.color,
-        title: {
-          text: "ECharts 入门示例"
-        },
+        // title: {
+        //   text: "ECharts 入门示例"
+        // },
         tooltip: {},
         legend: {
-          data: ["销量"]
+          data: ["销量",]
         },
         xAxis: {
-          data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+          data: ["衬衫1", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子",]
         },
         yAxis: {},
         series: [
@@ -45,7 +45,7 @@ export default {
               normal: {
                 //　　　　　　//每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
                   color:function(params){
-                         var colorList = ['rgb(164,205,238)','rgb(42,170,227)','rgb(25,46,94)','rgb(195,229,235)','red','yellow'];
+                       var colorList = ['#409EFF','#ECF0F5','#1890FF','#11A983','#13C2C2','#6959CD'];
                         return colorList[params.dataIndex];
                   }
               }
@@ -65,11 +65,9 @@ export default {
                     {name: 'A', value: 1212},
                     {name: 'B', value: 2323},
                     {name: 'C', value: 1919}
-                ]
+                ],          
             }
       })
-        
-
     }
 
   },

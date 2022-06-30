@@ -10,6 +10,8 @@ import BaiduMap from 'vue-baidu-map'
 import store from './store'
 import utils from '@/utils/utils';
 import 'element-ui/lib/theme-chalk/index.css';
+// import '@wangeditor/editor/dist/css/style.css'
+// import { createEditor, createToolbar, IEditorConfig, IDomEditor } from '@wangeditor/editor'
 // import './styles/theme/index.scss';
 // import '../src/assets/styles/theme/element-variables.scss';
 

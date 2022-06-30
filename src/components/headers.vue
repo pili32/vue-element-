@@ -21,7 +21,6 @@
 
 <script>
 import ColorPicker from "@/layout/colorpicker/index";
-
 export default {
     data(){
         return{

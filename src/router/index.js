@@ -20,27 +20,57 @@ const routes =[
     children:[{
       path:'/one',
       name:'第一个页面',
-      component:(() => import('../views/one.vue')),
+      component:(() => import('../pages/one/index.vue')),
       meta: {
         title: "one",
         icon: "el-icon-user-solid",
       },
       //在这里将定义需要菜单显示的路由，并在menus.vue中去到
-      children:[{
-        path:'/one/echart',
-        name:'第1.1个页面',
-        component:(() => import('../views/four.vue')),
-        meta:{
-          title:'',
-          icon:'el-icon-info'
-        }
-      }]
+      children:[
+        {
+          path:'/one/echart',
+          name:'echart',
+          component:(() => import('../layout/echart/echart.vue')),
+          meta:{
+            title:'',
+            icon:'el-icon-info'
+          }
+        },
+        {
+          path:'/one/table',
+          name:'表格',
+          component:(() => import('../pages/one/table.vue')),
+          meta:{
+            title:'',
+            icon:'el-icon-info'
+          }
+        },
+        {
+          path:'/one/wangeditor',
+          name:'富文本',
+          component:(() => import('../pages/one/wangeditor.vue')),
+          meta:{
+            title:'',
+            icon:'el-icon-info'
+          }
+        },
+        {
+          path:'/one/carousel',
+          name:'走马灯',
+          component:(() => import('../pages/one/carousel.vue')),
+          meta:{
+            title:'',
+            icon:'el-icon-info'
+          }
+        },
+
+      ]
 
     },
     {
       path:'/two',
       name:'第二个页面',
-      component:(() => import('../views/two.vue')),
+      component:(() => import('../pages/two/index.vue')),
       meta: {
         title: "two",
         icon: "el-icon-service",
@@ -48,7 +78,7 @@ const routes =[
       children:[{
         path:'/two/baiDuMap',
         name:'百度地图',
-        component:(() => import('../views/baiDuMap.vue')),
+        component:(() => import('../layout/baiDuMap/baiDuMap.vue')),
         meta:{
           title:'baiDuMap',
           icon: "el-icon-service",
@@ -59,7 +89,7 @@ const routes =[
     {
       path:'/layout/three',
       name:'第三个页面',
-      component:(() => import('../views/three.vue')),
+      component:(() => import('../pages/three/index.vue')),
       meta: {
         title: "three",
         icon: "el-icon-s-tools",

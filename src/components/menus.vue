@@ -60,8 +60,12 @@ export default {
     },
     methods:{
         handleOpen(key){
+            console.log(key)
             const item = this.store[1].children.filter( e => e.path === key)
+            console.log(item)
             let result =  this.$filterMenu(key,item[0])
+            console.log(result)
+
             this.$store.dispatch('setBreadNav', result)
  
 
