@@ -17,11 +17,13 @@ export default {
       theme: ''
     }
   },
-  computed: {
-    defaultTheme() {
-      return this.$store.state.settings.theme
-    }
-  },
+  // computed: {
+  //   defaultTheme() {
+  //       console.log( this.$store.state.settings)
+
+  //     return this.$store.state.settings.theme
+  //   }
+  // },
   watch: {
     defaultTheme: {
       handler: function(val, oldVal) {
@@ -34,7 +36,6 @@ export default {
       if (typeof val !== 'string') return
       const themeCluster = this.getThemeCluster(val.replace('#', ''))
       const originalCluster = this.getThemeCluster(oldVal.replace('#', ''))
-      console.log(themeCluster, originalCluster)
       const $message = this.$message({
         message: '  Compiling the theme',
         customClass: 'theme-message',
@@ -56,7 +57,9 @@ export default {
         }
       }
       if (!this.chalk) {
-        const url = `https://unpkg.com/element-ui@${version}/lib/theme-chalk/index.css`
+        const path = '/static/theme-chalk.css'
+        const url =window.location.origin+path
+        // const url = `https://unpkg.com/element-ui@${version}/lib/theme-chalk/index.css`
         await this.getCSSString(url, 'chalk')
       }
       const chalkHandler = getHandler('chalk', 'chalk-style')

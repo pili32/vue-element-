@@ -3,11 +3,6 @@ import Router from 'vue-router'
 import main from '@/views/index'
 import layout from '@/components/layout'
 import store from '../store'
-
-
-
-
-
 const routes =[
   {
     path: '/',

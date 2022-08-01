@@ -1,6 +1,6 @@
 <template>
-        <div class="box-flex">
-            <!-- <wang-editor></wang-editor> -->
+        <div class="wangEditor-flex">11
+            <wang-editor></wang-editor>
         </div>
 </template>
 
