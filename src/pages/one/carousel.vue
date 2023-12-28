@@ -6,7 +6,7 @@
 
 
 <script>
-import CarOusel from "@/layout/carousel/index";
+import CarOusel from "@/components/carousel";
 export default {
     components:{CarOusel},
     data(){

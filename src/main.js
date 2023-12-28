@@ -8,7 +8,11 @@ import ElementUI from 'element-ui'
 import echarts from 'echarts'
 import BaiduMap from 'vue-baidu-map'
 import store from './store'
+import plugins from '@/utils/plugins';
 import utils from '@/utils/utils';
+
+
+import './components'
 import 'element-ui/lib/theme-chalk/index.css';
 // import '@wangeditor/editor/dist/css/style.css'
 // import { createEditor, createToolbar, IEditorConfig, IDomEditor } from '@wangeditor/editor'
@@ -18,8 +22,12 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 
 // import ('./styles/theme/index.scss') 
-
+console.log(plugins);
 Vue.use(utils);
+Vue.use(plugins);
+
+// Vue.use(componentss);
+
 
 // Vue.use(Loading.directive);
 // Vue.prototype.$loading = Loading.service;
@@ -46,6 +54,6 @@ new Vue({
   el: '#app',
   router,
   store,
-  components: { App },
+  render:h =>h(App),
   template: '<App/>'
 })

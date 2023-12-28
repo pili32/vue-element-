@@ -1,5 +1,7 @@
 <template>
   <div class="warp">
+    <text-bal></text-bal>
+
     <div class="box-table">
       <el-table
         :data="tableData"

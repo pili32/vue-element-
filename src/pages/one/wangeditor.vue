@@ -6,8 +6,7 @@
 
 
 <script>
-import WangEditor from '@/layout/wangEditor/wangEditor';
-
+import WangEditor from '@/components/wangeditor';
 export default {
     components:{
         WangEditor

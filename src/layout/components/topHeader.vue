@@ -20,7 +20,7 @@
 
 
 <script>
-import ColorPicker from "@/layout/colorpicker/index";
+import ColorPicker from "@/layout/colorpicker";
 export default {
     data(){
         return{
