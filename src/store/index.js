@@ -2,6 +2,8 @@ import Vue from "vue";
 import Vuex from "vuex";
 
 import tagView from "./modules/tagView"
+import user from "./modules/user"
+
 console.log(tagView);
 Vue.use(Vuex);
 
@@ -64,7 +66,8 @@ const store = new Vuex.Store({
     }
   },
   modules: {
-    tagView
+    tagView,
+    user
     //这里是我自己理解的是为了给全局变量分组，所以需要写提前声明其他store文件，然后引入这里
   }
 });

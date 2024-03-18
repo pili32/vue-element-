@@ -11,7 +11,7 @@
  }
  
  let plugins = [];
- 
+ console.log(process);
  module.exports = {
    /* 放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录 */
    assetsDir: "assets",
@@ -83,6 +83,14 @@
          statsOptions: {source: false},
          openAnalyzer: false
        }]);
-   }
+   },
+   css: {
+    loaderOptions: {
+      // 没有分号会报错
+      scss: {
+        // additionalData: `@import "@/styles/theme/element-variables.scss";`
+      }
+    }
+  }
  };
  

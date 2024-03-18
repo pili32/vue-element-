@@ -1,16 +1,23 @@
 'use strict'
+// 引入当前目录中的utils工具配置文件
 const utils = require('./utils')
+// 引入webpack来使用webpack内置插件
 const webpack = require('webpack')
+// 引入config目录中的index.js配置文件
 const config = require('../config')
+// 引入webpack-merge插件用来合并webpack配置对象，也就是说可以把webpack配置文件拆分成几个小的模块
 const merge = require('webpack-merge')
 const path = require('path')
+// 引入当前目录下的webpack.base.conf.js配置文件，主要配置的是打包各种文件类型的配置
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
 const HOST = process.env.HOST
+console.log( process.env,'00000000000000');
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {

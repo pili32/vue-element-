@@ -1,13 +1,11 @@
 <template>
   <el-row class="layout_wapper">
-    <el-row>
-      <el-col :span="24" class="layout_header">
-        <top-header></top-header>
-      </el-col>
-      <el-col :span="24" class="layout_header">
-        <tages-view></tages-view>
-      </el-col>
-    </el-row>
+    <!-- <el-row>
+      <el-col :span="24" class="layout_header"> -->
+      <!-- </el-col>
+      <el-col :span="24" class="layout_header"> -->
+      <!-- </el-col>
+    </el-row> -->
     <el-row class="layout_list">
       <el-col :span="4" style="height: 100%">
         <div class="layout_menu">
@@ -18,6 +16,9 @@
           collapse-transition
           :unique-opened="uniqueOpened"
           :default-active="currentRoute"
+          text-color="#fff"
+          active-text-color="#4982FC"
+          background-color="#304156"
           >
             <side-bar
               v-for="item in routerMenu"
@@ -29,8 +30,12 @@
         </div>
       </el-col>
       <el-col :span="20" style="height: 100%">
+        <top-header></top-header>
+
         <div class="layout_content">
-          <bread-nav></bread-nav>
+        <tages-view></tages-view>
+
+          <!-- <bread-nav></bread-nav> -->
           <div class="rouer-page">
             <router-view />
           </div>
@@ -66,13 +71,16 @@ export default {
     ...mapGetters(["routerMenu","currentRoute"]),
   },
   created(){
-    console.log(this.$store.state.routerMenu);
+    // console.log(this.$store.state.routerMenu);
   },
   methods:{
     handleOpen(key) {
-      const item = this.navaList.filter((e) => e.path === key);
+      if(this.navaList){
+        const item = this.navaList.filter((e) => e.path === key);
       let result = this.$filterMenu(key, item[0]);
       this.$store.dispatch("setBreadNav", result);
+      }
+
     },
   }
 };
@@ -82,27 +90,41 @@ export default {
   /* position: relative; */
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .layout_header {
   /* height: 80px; */
   overflow: hidden;
 }
 .layout_list {
-  height: calc(100% - 80px);
-  padding: 20px 0;
+  flex-grow: 1;
+  padding-top: 5px;
+  /* box-shadow: 0 2px 12px 0 rgba(0,0,0,.1); */
+  padding: 5px;
+
 }
 .layout_menu {
   /* width: 30%; */
   height: 100%;
+  border-right:2px solid  #ddd;
+  background: rgb(48, 65, 86);
+  box-shadow: 2px 0 6px rgba(0,21,41,.35);
+  overflow: hidden;
+
   /* background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%); */
 
 
 }
 .layout_content {
   /* width: 70%; */
-  height: 100%;
-  padding: 0 20px 20px 20px;
+  /* height: 100%; */
+  /* padding: 0 20px 0px 5px; */
   box-sizing: border-box;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04); */
+  display: flex;
+  flex-direction: column;
+  flex: 1
 }
 a {
   text-decoration: none;
@@ -111,12 +133,21 @@ a {
 a:hover {
   color: #fff;
 }
+
 .rouer-page {
-  border: 1px solid #ddd;
-  height: calc(100% - 36px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
-  padding: 20px;
+
+  flex-grow:1;
+  padding: 5px 0;
   box-sizing: border-box;
 }
+
+/* 点击菜单变色 */
+.el-submenu .el-menu-item{
+  /* background: #000; */  
+}
+.el-submenu .el-menu-item{
+  /* min-width: 0; */
+}
+
 </style>
   

@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4470813 */
+  src: url('iconfont.woff2?t=1710730455945') format('woff2'),
+       url('iconfont.woff?t=1710730455945') format('woff'),
+       url('iconfont.ttf?t=1710730455945') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-password:before {
+  content: "\e663";
+}
+
+.icon-username:before {
+  content: "\e600";
+}
+

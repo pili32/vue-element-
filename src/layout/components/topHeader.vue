@@ -1,19 +1,21 @@
 <template>
     <div class="app_header">
-        <color-picker></color-picker>
+        <bread-nav></bread-nav>
+        <!-- <color-picker></color-picker> -->
        <el-button type="primary" style="margin-right:100px;" @click="outThere">退出</el-button>
     </div>
 </template>
 
 <style >
 .app_header{
-    background :red;
-    height: 80px;
     width: 100%;
-    background: #ddd;
     display: inline-block;
     text-align: right;
-      line-height: 80px
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px ;
+    box-sizing: border-box;
 }
 
 </style>
@@ -21,6 +23,8 @@
 
 <script>
 import ColorPicker from "@/layout/colorpicker";
+import BreadNav from "./BreadNav.vue";
+
 export default {
     data(){
         return{
@@ -28,12 +32,15 @@ export default {
         }
     },
     components:{
-        ColorPicker
+        ColorPicker,
+    BreadNav,
+
     },
     methods:{
         outThere(){
+            this.$router.push(`/login`)
             // window.location.origin + window.location.pathname获取到当前的地址 + 路径
-            window.location.href = window.location.origin +window.location.pathname
+            // window.location.href = window.location.origin +window.location.pathname
         }
     }
 }

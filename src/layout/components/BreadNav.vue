@@ -74,9 +74,9 @@ export default {
 };
 </script>
 
-<style>
+<style   >
 .breadcrumb {
-  padding: 20px 0;
+  /* padding: 20px 0; */
 }
 .no-redirect {
     color: #97a8be;

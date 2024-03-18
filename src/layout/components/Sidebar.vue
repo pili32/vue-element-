@@ -96,6 +96,10 @@ watch:{
 </script>
   
   <style  >
+  .el-menu{
+    border: none;
+    background: rgb(48, 65, 86);
+  }
 /* .el-menu{
   background:none !important;
 

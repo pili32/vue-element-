@@ -1,0 +1,23 @@
+{
+  "id": "4470813",
+  "name": "szx-project",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1058101",
+      "name": "Password",
+      "font_class": "password",
+      "unicode": "e663",
+      "unicode_decimal": 58979
+    },
+    {
+      "icon_id": "20981768",
+      "name": "username",
+      "font_class": "username",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    }
+  ]
+}

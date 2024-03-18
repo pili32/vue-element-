@@ -4,36 +4,19 @@ import layout from '@/layout'
 export default
     [
         {
-            path:"/",
+            path:"/home",
             component:layout,
             redirect: 'home',
             name:'首页',
             alwaysShow:true,
+            sort:0,
             children:[
                 {
                     path: "/home",
-                    name: "home",
+                    name: "首页",
                     component: () => import("@/pages/home"),
                     meta: {
-                      title: "home",
-                      icon: "el-icon-info"
-                    },
-                  },
-            ]
-
-          },
-          {
-            path:"/screen",
-            component:layout,
-            alwaysShow:true,
-            name:'首页',
-            children:[
-                {
-                    path: "/screenPage",
-                    name: "screen",
-                    component: () => import("@/pages/screen"),
-                    meta: {
-                      title: "screen",
+                      title: "首页",
                       icon: "el-icon-info"
                     },
                   },

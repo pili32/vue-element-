@@ -3,12 +3,13 @@
     <div v-for="(tag  ,index) in visitedViews" :key="tag.path">
       <router-link :to="tag.path">
         <el-tag
-          :closable="index===0?false:true"
           :type="tag.type"
           :class="isActive(tag) ? 'isActive' : ''"
           @close.prevent.stop="closeTag(tag)"
         >
           {{ tag.name }}
+        <span  class="el-icon-close" v-if="!isActive(tag) && index!=0" @click.prevent.stop="closeTag(tag)" />
+
         </el-tag>
       </router-link>
     </div>
@@ -75,13 +76,17 @@ export default {
 };
 </script>
 
-<style  scoped>
+<style  scoped lang="less">
 .tags {
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid greenyellow;
-}
-.el-tag {
+  // box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+  margin: 2px 0;
+  border-bottom:1px solid #ddd;
+  border-top:1px solid #ddd;
+
+
+  .el-tag {
   margin: 5px 3px;
 }
 .isActive {
@@ -91,4 +96,6 @@ export default {
 .isActive .el-icon-close {
   color: #000;
 }
+}
+
 </style>

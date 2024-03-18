@@ -15,8 +15,11 @@ const requireContext = require.context(
 requireContext.keys().forEach(fileName => {
   if(fileName === 'index') return
   const routerModule = requireContext(fileName)
+
   routers=[...routers,...(routerModule.default || routerModule)]
 });
+
+routers.sort((b, a) =>   b.sort -a.sort )
 
 const dynamicRouters =[
   // {
@@ -41,10 +44,16 @@ const dynamicRouters =[
 const routes =[
 
   {
-    path: '',
+    path: '/',
     name: 'login',
-    component:(() => import('@/layout/login.vue')),
+    component:(() => import('@/views/login')),
     hidden: true
+  },
+  {
+    path: '',
+    redirect: '/',
+    hidden: true
+
   },
   {
     path:'/redirect',  
