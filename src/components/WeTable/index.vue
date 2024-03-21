@@ -1,5 +1,5 @@
 <template>
-    <div style="background: #fff; padding: 0 10px">
+    <div style="background: #fff; padding: 0 0">
       <el-table
         :row-style="{ height: '40px' }"
         :cell-style="{ padding: '0px' }"
@@ -8,7 +8,7 @@
         @row-click="rowClick"
         @selection-change="$emit('selection-change', $event)"
         class="base-table full-width"
-        v-loading="tableLoading"
+        v-loading="loading"
         :data="tableListCopy"
         :size="size"
         :border="border"
@@ -151,7 +151,7 @@
           return {};
         },
       },
-      tableLoading: {
+      loading: {
         type: Boolean,
         default: false,
       },
@@ -305,7 +305,7 @@
   }
   .pagination {
     background: #fff;
-    padding: 0 10px 0 10px;
+    padding:0;
     // padding-bottom: 10px;
     width: 1250px;
     height: 40px;
@@ -346,6 +346,9 @@
   }
   ::v-deep .el-table .cell.el-tooltip{
     white-space: pre-wrap;
+  }
+  .el-tabs--border-card>.el-tabs__content{
+    padding: 0;
   }
   </style>
   

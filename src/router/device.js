@@ -12,6 +12,8 @@ export default [
       title: "one",
       icon: "el-icon-user-solid",
       roule:['22','23'],
+      icon:'icon-shebeiweixiujilu'
+
 
     },
     //在这里将定义需要菜单显示的路由，并在menus.vue中去到

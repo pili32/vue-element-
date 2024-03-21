@@ -4,11 +4,14 @@
       <!-- 子菜单 -->
 
       <el-menu-item :index="item.path" v-if="!item.children && isRoule(item)" >
-        <i class="el-icon-document"></i>
-        <span slot="title">{{ item.name  }}</span>
+        <div >
+          <i :class="item.meta.icon" class="iconfont" ></i>
+          <span slot="title" class="sub-title">{{ item.name  }}</span>
+        </div>
+
       </el-menu-item>
       <el-menu-item :index="onlyOneChild.path" v-if="item.children ">
-        <i class="el-icon-document"></i>
+        <i :class="item.meta.icon" class="iconfont"></i>
         <span slot="title" >{{onlyOneChild.title}}</span>
       </el-menu-item>
 
@@ -18,8 +21,8 @@
     <template v-else>
       <el-submenu :index="item.path" v-if="!item.hidden && item.requiresAuth">
         <template slot="title">
-            <i class="iconfont" v-if="item.icon" :class="item.meta.icon"></i>
-            <span class="sub-title">{{ item.name }}{{ item.roule }}</span>
+            <i class=" iconfont" v-if="item.meta.icon" :class="item.meta.icon"></i>
+            <span class="sub-title">{{ item.name }}</span>
           </template>
           <template >
             <Sidebar
@@ -149,6 +152,12 @@ created(){
   .el-menu{
     border: none;
     background: rgb(48, 65, 86);
+  }
+  ::v-deep .el-menu{
+    min-width: 100px;
+  }
+  .sub-title{
+    margin-left: 5px;
   }
 /* .el-menu{
   background:none !important;

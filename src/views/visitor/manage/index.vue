@@ -6,7 +6,7 @@
       @reset="reset"
     ></HeaderSearch>
     <div class="main-container" ref="minRef">
-      <el-tabs v-model="activeName" style="margin-top: 15px"  type="border-card"    @tab-click="tabsChange">
+      <el-tabs v-model="activeName"   type="border-card"    @tab-click="tabsChange">
         <el-tab-pane
           v-for="item in tabMapOptions"
           :key="item.key"
@@ -19,7 +19,7 @@
               :columns="columns"
               :selection="true"
               :data="tableData"
-              
+              :loading="loading"
               :order="false"
               :height="tableHeight"
               @selection-change="selectionChange"
@@ -27,8 +27,8 @@
             >
               <el-table-column align="center" label="操作" width="160px">
                 <template slot-scope="{ row }">
-                  <el-button type="text" @click="pass(row)">通过</el-button>
-                  <el-button type="text" @click="noPass(row)">不通过</el-button>
+                  <el-button type="text" @click="pass(row,1)">通过</el-button>
+                  <el-button type="text" @click="pass(row,2)">不通过</el-button>
                   <!-- <el-button type="text" @click="rolebtn(row)">角色授权</el-button>
             <el-button type="text" @click="deleteHandler([{ id: row.id }])">删除</el-button> -->
                 </template>
@@ -43,7 +43,7 @@
 
 <script>
 import utils from "@/utils/utils";
-import { visitorPageAuditList  } from '@/api/visitor';
+import { visitorPageAuditList,examineApi  } from '@/api/visitor';
 
 export default {
   name: "",
@@ -136,12 +136,11 @@ export default {
       query: {
         current: 1,
         size: 10,
-        executorId: "1751805259625705474",
-        intervieweePhone: "18986089916",
+        // executorId:this.$storage.get('userInfo').id, //承办人,
+        // intervieweePhone: this.$storage.get('userInfo').phone,
         isDeal:0
       },
-
-      id: "",
+      loading:true,
       tabMapOptions: [
         { label: "待审批", key: "0" },
         { label: "已审批", key: "1" },
@@ -159,7 +158,7 @@ export default {
   mounted(){
     this.$nextTick(()=>{
     const height = this.$refs.minRef.offsetHeight
-    this.tableHeight = String(height - 145)
+    this.tableHeight = String(height - 90)
     console.log(this.tableHeight,'heightheight');
     })
     this.getList()
@@ -192,8 +191,43 @@ export default {
       this.getList();
     },
     //通过
-    pass(){
+    /**
+     * @state 1初审通过  3复审通过 2初审不通过  4 复审不通过 
+     * 
+     * 
+     */
+    pass(row,state){
+      console.log(row);
+      console.log(this.roleType);
+      let auditStatus =  state
+      if(this.roleType ==23) {
+        auditStatus = state===1 ? 3 : 4
+      }
+      const params = {
+            auditStatus: auditStatus, //初审1和2,复审3和4
+            // id:this.data.dataId,
+            fid:row.fid,
+            vid: row.vid
+        }
+        console.log(params);
+      // this.roleType
+      examineApi(params).then(res =>{
+        if (res.code == 200) {
+                this.$message({
+                  message: '操作成功',
+                  type: 'success'
+                })
+                this.getList()
+            } else {
+              this.$message({
+                message: '操作失败',
+                type: 'warning'
+              })
+            }
+            
+      }).catch( error =>{
 
+      })
     },
     //不通过
     noPass(){
@@ -209,20 +243,31 @@ export default {
       this.query.isDeal =  Number(  this.activeName )
       Object.assign(this.query, params);
       const that = this
+      console.log(this.query);
       visitorPageAuditList(this.query).then((res) => {
-        const { records, current, total } = res.data;
         
+        const { records, current, total } = res.data;
         this.$refs.roleTable[this.activeName].setPageInfo(current, total, records);
-
+        this.loading = false
       });
     },
     selectionChange(){
 
     },
-    afterCurrentPageClick(){
+    afterCurrentPageClick(event){
+      this.loading = true
+      this.query.current = event.pageNum
+      this.query.size = event.pageSize
+      this.getList()
 
     },
     
   },
 };
 </script>
+
+<style>
+  .el-tabs--border-card>.el-tabs__content{
+    padding: 0;
+  }
+</style>

@@ -12,6 +12,7 @@ export default [
       title: "one",
       icon: "el-icon-user-solid",
       roule:['22','23'],
+      icon:'icon-fangkedengji '
 
     },
     //在这里将定义需要菜单显示的路由，并在menus.vue中去到
@@ -22,7 +23,7 @@ export default [
         component: () => import("@/views/visitor/manage/index.vue"),
         meta: {
           title: "table",
-          icon: "el-icon-info",
+          icon: "icon-fangkeshenpi",
           requiresAuth:true,
           roule:['22','23'],
 

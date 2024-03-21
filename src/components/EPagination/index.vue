@@ -135,4 +135,8 @@ $color-size: 14px;
     }
   }
 }
+.pagination{
+  padding-left: 10px !important;
+  margin-top: 5px !important;
+}
 </style>

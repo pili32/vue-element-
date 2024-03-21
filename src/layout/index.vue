@@ -139,17 +139,16 @@ a:hover {
   display: flex;
   flex: 1;
   flex-grow: 1;
-  padding: 5px 0;
   box-sizing: border-box;
   width: 100%;
 }
 
 /* 点击菜单变色 */
 .el-submenu .el-menu-item {
-  /* background: #000; */
+  background: #000;
 }
-.el-submenu .el-menu-item {
-  /* min-width: 0; */
+.el-submenu .el-menu-item{
+  min-width: 0 !important;
 }
 .container {
   display: flex;

@@ -343,10 +343,8 @@
   
   <style lang="scss" scoped>
   .table-filter {
-    background: #fff;
     height: 56px;
     line-height: 56px;
-    border-radius: 8px;
   }
   .filter-item {
     margin-right: 8px;

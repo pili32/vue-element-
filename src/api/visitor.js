@@ -10,3 +10,12 @@ export function visitorPageAuditList(data) {
   })
 }
 
+//审批通过和不通过
+export function examineApi(data) {
+  console.log(data);
+  return request({
+    url: '/business/visitor/examine',
+    method: 'post',
+    data
+  })
+}
