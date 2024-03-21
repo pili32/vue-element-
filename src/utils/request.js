@@ -2,24 +2,24 @@ import axios from "axios";
 import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
-
-
-console.log(11111111111);
+console.log(getToken(),'getTokengetTokengetToken');
 console.log(process);
 
 const service = axios.create({
-    baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
-    baseURL: 'http://172.16.18.159:8888', // url = base url + request url
+    // baseURL: process.env, // url = base url + request url
+    // baseURL:  process.env.VUE_APP_API_URL+'http://localhost:8080/api', // url = base url + request url
+    baseURL:process.env.NODE_ENV === "development"
+    ? "api"                  // ? "http:/localhost:8039"
+    :  process.env.VUE_APP_API_URL,
     // withCredentials: true, // send cookies when cross-domain requests
     timeout: 5000 // request timeout
 })
 
 service.interceptors.request.use(
     config => {
-        console.log(process.env.VUE_APP_BASE_API);
-        if (store.getters.token) {
-            config.headers['X-Token'] = getToken()
-        }
+        // if (store.getters.token) {
+        // }
+        config.headers['Authorization'] = getToken()
         return config
     },
     error => {
@@ -30,6 +30,7 @@ service.interceptors.request.use(
 )
 service.interceptors.response.use(
     response => {
+        console.log(response);
         const res = response.data
         if (res.code !== 200) {
             Message({

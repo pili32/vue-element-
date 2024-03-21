@@ -6,13 +6,14 @@ import router from './router'
 import ElementUI from 'element-ui'
 // import 'element-ui/lib/theme-chalk/index.css'
 import echarts from 'echarts'
-import BaiduMap from 'vue-baidu-map'
+// import BaiduMap from 'vue-baidu-map'
 import store from './store'
 import plugins from '@/utils/plugins';
 import utils from '@/utils/utils';
-import dataV from '@jiaminghi/data-view'
+// import dataV from '@jiaminghi/data-view'
 
 import storage from "@/utils/storage"
+import "./assets/css/global.css"
 
 import './components'
 import 'element-ui/lib/theme-chalk/index.css';
@@ -28,7 +29,7 @@ import "./assets/aliconfont/download/iconfont.css"
 console.log(plugins);
 Vue.use(utils);
 Vue.use(plugins);
-Vue.use(dataV)
+// Vue.use(dataV)
 Vue.prototype.$storage=storage
 // Vue.use(componentss);
 
@@ -42,10 +43,10 @@ Vue.prototype.$storage=storage
 // Vue.prototype.$message = Message;
 Vue.prototype.$echarts = echarts
  
-Vue.use(BaiduMap, {
-  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
-  ak: 'YYUGh7Lm82GbDKXWCbP0QyBap7r4tgfz'
-});
+// Vue.use(BaiduMap, {
+//   // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
+//   ak: 'YYUGh7Lm82GbDKXWCbP0QyBap7r4tgfz'
+// });
 
 Vue.use(ElementUI)
 

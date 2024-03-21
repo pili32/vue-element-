@@ -7,14 +7,13 @@
       <el-breadcrumb-item
         v-for="item in navaList"
         :key="item.path"
-        :to="{ path: item.path }"
         >
-        <span  v-if="item.noClick" class="no-redirect "  @click.stop>{{ item.name }}</span>
-        <span  v-else class="no-redirect ">{{ item.name }}</span>
+
+        <span class="no-redirect ">{{ item.name }}</span>
 
       </el-breadcrumb-item>
     </transition-group>
-
+    <!--  -->
     </el-breadcrumb>
   </div>
 </template>
@@ -32,7 +31,7 @@ export default {
     // },
   },
   watch: {
-    $route (){
+    $route (query){
       this.getBreadcrumb();
     },
   },
@@ -40,27 +39,23 @@ export default {
     this.getBreadcrumb();
 
   },
+  toPath(path){
+
+  },
   methods:{
     getBreadcrumb() {
       let {matched} = this.$route
       const firsRoute = matched[0]
-        //判断当前如果是不是首页就添加首页进去
-      if(!this.isFirsRoute(firsRoute)) {
+      //判断当前如果是不是首页就添加首页进去
+      let isCopyPath = this.isFirsRoute(firsRoute)
+
+      if(!isCopyPath) {
         matched = [{path:'/home',name:'首页'}].concat(matched)
+      } else {
+        this.navaList = [firsRoute]
+        return
       }
-      //进行循环判断当前如果是第二个节点是不允许点击
-      this.navaList = matched.map((item,index) =>{
-        if(index===1) {
-          return {
-            ...item,
-            noClick:true
-          }
-        } else {
-          return {
-            ...item,
-          }
-        }
-      })
+      this.navaList = matched
     },
     //判断当前如果是不是首页
     isFirsRoute({name}){
@@ -68,7 +63,6 @@ export default {
       else return true
     },
     toRouter(item){
-      console.log(item);
     }
   },
 };

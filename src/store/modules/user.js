@@ -3,6 +3,7 @@ import { getToken,setToken } from '@/utils/auth'
 
 const state ={
   token: getToken(),
+  userInfo:{}
 
 }
 const actions = {
@@ -14,6 +15,8 @@ const actions = {
         .then(response => {
           const { data } = response;
           commit("SET_TOKEN", data.token);
+          commit("SET_USERINFO", data.user);
+
           setToken(data.token);
           resolve(data);
         })
@@ -27,6 +30,10 @@ const mutations = {
   SET_TOKEN: (state, token) => {
     state.token = token;
   },
+  SET_USERINFO:(state,user) =>{
+    state.userInfo = user;
+
+  }
 };
 export default {
   actions,

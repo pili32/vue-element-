@@ -3,21 +3,23 @@
     <template  v-if="hasonlyChildren(item) ">
       <!-- 子菜单 -->
 
-      <el-menu-item :index="item.path" v-if="!item.children">
+      <el-menu-item :index="item.path" v-if="!item.children && isRoule(item)" >
         <i class="el-icon-document"></i>
         <span slot="title">{{ item.name  }}</span>
       </el-menu-item>
-      <el-menu-item :index="onlyOneChild.path" v-else>
+      <el-menu-item :index="onlyOneChild.path" v-if="item.children ">
         <i class="el-icon-document"></i>
         <span slot="title" >{{onlyOneChild.title}}</span>
       </el-menu-item>
+
+      <!-- || isShowChange1(item) -->
     </template>
     <!-- 父级菜单 -->
     <template v-else>
-      <el-submenu :index="item.path" v-if="!item.hidden">
+      <el-submenu :index="item.path" v-if="!item.hidden && item.requiresAuth">
         <template slot="title">
             <i class="iconfont" v-if="item.icon" :class="item.meta.icon"></i>
-            <span class="sub-title">{{ item.name }}</span>
+            <span class="sub-title">{{ item.name }}{{ item.roule }}</span>
           </template>
           <template >
             <Sidebar
@@ -29,6 +31,22 @@
           </template>
       </el-submenu>
     </template>
+    <!-- <template v-else>
+      <el-submenu :index="item.path" v-if="isShowChange(item)">
+        <template slot="title">
+            <i class="iconfont" v-if="item.icon" :class="item.meta.icon"></i>
+            <span class="sub-title">{{ item.name }}{{ item.roule }}</span>
+          </template>
+          <template >
+            <Sidebar
+            v-for="child in item.children"
+            :key="child.path"
+            :index="child.path"
+            :item="child"
+            ></Sidebar>
+          </template>
+      </el-submenu>
+    </template> -->
   </div>
 </template>
   <script>
@@ -38,7 +56,7 @@ import { mapGetters } from "vuex";
 
 
 export default {
-  props:['item'],
+  props:['item',],
   name:'Sidebar',
   components:{
   },
@@ -49,7 +67,8 @@ export default {
       pathUrl: "",
       store: this.$store.state.routerMenu,
       defaultActive: "",
-      onlyOneChild:{}
+      onlyOneChild:{},
+      roleType:''
     };
   },
 watch:{
@@ -59,13 +78,12 @@ watch:{
       immediate: true
     },
 },
+created(){
+    const roleJson = this.$storage.get('userInfo').roleJson
+    this.roleType= String(JSON.parse(roleJson).visitor)
+},
   mounted() {
-    // console.log(this.store);
     this.navaList = this.store;
-    // console.log(this.navaList, "hidden");
-
-    // this.navaList = this.$store.state.routerMenu.filter( e=>!e.hidden).map( m => m.children)
-    // console.log(this.navaList[1],'navaList')
   },
   computed: {
     //获取store.getters中的currentRoute
@@ -80,15 +98,47 @@ watch:{
     handleClose() {
       
     },
+    //判断当前的菜单是否只包含一个子级,alwaysShow表示只展示子级不展示父级菜单
     hasonlyChildren(item){
-
       if(!item.children && !item.hidden) {
         return true
       } else if ( item.children&& item.children.length<2 && item.alwaysShow) {
-        console.log(item);
         this.onlyOneChild.title = item.children[0].name
         this.onlyOneChild.path = item.children[0].path
         return true
+      }
+    },
+
+    //根据roule权限判断当前是否显示子菜单
+    isRoule(item){
+      if(item.meta.roule ) {
+        console.log(item.meta.roule.includes(this.roleType));
+        if(item.meta.roule.includes(this.roleType)) {
+            return true
+          } else {
+          return false
+          }
+
+        }else {
+          return true
+
+        }
+    },
+    isShowChange(item){
+      if(!item.hidden && item.requiresAuth) {
+        if(item.meta.roule ) {
+          if(item.meta.roule.includes(this.roleType)) {
+            return true
+          } else {
+          return false
+          }
+
+        }else {
+          return true
+
+        }
+      } else {
+        return false
       }
     }
   },

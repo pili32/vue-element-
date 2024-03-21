@@ -1,0 +1,82 @@
+.el-breadcrumb__inner,
+.el-breadcrumb__inner a {
+  font-weight: 400 !important;
+}
+
+.el-tooltip__popper {
+  max-width: 50%;
+  line-height: 1.5;
+}
+
+.el-upload input[type='file'] {
+  display: none !important;
+}
+
+.el-select {
+  height: 100%;
+  line-height: 100%;
+}
+
+.el-upload__input {
+  display: none;
+}
+
+.el-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+}
+
+.upload-container .el-upload {
+  width: 100%;
+}
+
+.upload-container .el-upload .el-upload-dragger {
+  width: 100%;
+  height: 200px;
+}
+
+.el-dropdown-menu a {
+  display: block;
+}
+
+.el-range-separator {
+  box-sizing: content-box;
+}
+
+.el-button--primary {
+  background-color: #235ff6;
+  border-color: #235ff6;
+}
+
+.el-button--primary:focus,
+.el-button--primary:hover {
+  background-color: #235ff6;
+  border-color: #235ff6;
+}
+
+.reset-btn {
+  color: #f25852;
+}
+
+.reset-btn.el-button--primary {
+  background-color: #fff;
+  border-color: #f25852;
+}
+
+.reset-btn.el-button--primary:focus,
+.reset-btn.el-button--primary:hover {
+  border-color: #f25852;
+  color: #f25852;
+}
+
+.el-dialog__header {
+  padding: 15px 20px;
+  border-bottom: 1px solid #e3e9f4;
+}
+
+.el-time-spinner__wrapper .el-scrollbar__wrap {
+  margin-bottom: 0 !important;
+  margin-right: 0 !important;
+}

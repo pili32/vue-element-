@@ -32,7 +32,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="scss">
 .box-flex {
   display: flex;
   flex-direction: column;

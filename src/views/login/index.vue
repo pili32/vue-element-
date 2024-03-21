@@ -91,7 +91,7 @@ export default {
     return {
       loginForm: {
         password: "123456",
-        username: "liubei",
+        username: "guanyu",
       },
       loginRules: {
         username: [
@@ -102,20 +102,22 @@ export default {
         ],
       },
       redirect: undefined,
+      loading:false
 
     };
   },
   watch: {
-    $route: {
-      handler: function(route) {
-        const query = route.query
-        if (query) {
-          this.redirect = query.redirect
-          this.otherQuery = this.getOtherQuery(query)
-        }
-      },
-      immediate: true
-    }
+    // $route: {
+    //   handler: function(route) {
+    //     console.log(route);
+    //     const query = route.query
+    //     if (query) {
+    //       this.redirect = query.redirect
+    //       this.otherQuery = this.getOtherQuery(query)
+    //     }
+    //   },
+    //   immediate: true
+    // }
   },
   methods:{
     handleLogin() {
@@ -127,11 +129,9 @@ export default {
               console.log(res);
 
               console.log(this.redirect);
-              this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
-
-              this.$storage.set('szx-userInfo', res.user);
-
-            //   this.loading = false
+              this.$router.push({ path: 'home' || '/', query: this.otherQuery })
+              this.$storage.set('userInfo', res.user);
+              this.loading = false
             })
             .catch(() => {
               this.loading = false
@@ -152,13 +152,13 @@ export default {
     }
   },
   mounted() {
-    console.log(validate);
+    console.log(process,'processprocessprocess');
 
   },
 };
 </script>
 
-<style lang="less"  >
+<style lang="scss"  >
 .login-container {
   height: 100%;
   width: 100%;

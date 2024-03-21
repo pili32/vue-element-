@@ -35,7 +35,7 @@ export default {
 };
 </script>
 
-<style  lang="less">
+<style  lang="scss">
 .screen{
     height: 100%;
     background: #353434;

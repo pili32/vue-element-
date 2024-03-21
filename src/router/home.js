@@ -4,12 +4,17 @@ import layout from '@/layout'
 export default
     [
         {
-            path:"/home",
+            path:"/",
             component:layout,
-            redirect: 'home',
+            redirect: '/home',
             name:'首页',
             alwaysShow:true,
+            requiresAuth:true, 
             sort:0,
+            meta: {
+              title: "首页",
+              icon: "el-icon-info"
+            },
             children:[
                 {
                     path: "/home",
@@ -24,3 +29,4 @@ export default
 
           },
     ]
+

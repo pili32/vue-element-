@@ -1,10 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
-
 import tagView from "./modules/tagView"
 import user from "./modules/user"
-
-console.log(tagView);
+import pagination from './modules/pagination';
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
@@ -23,7 +21,6 @@ const store = new Vuex.Store({
       state.userInfo = data;
     },
     SAVE_ROUTER(state, data) {
-      console.log(data);
       state.routerMenu = data;
     },
     saveBreadNav(state, data) {
@@ -37,7 +34,6 @@ const store = new Vuex.Store({
   getters: {
     currentRoute:state => state.currentRoute,
     routerMenu:state => state.routerMenu
-
     //这里是get方法
   },
   // 在这里进行数据处理
@@ -67,7 +63,8 @@ const store = new Vuex.Store({
   },
   modules: {
     tagView,
-    user
+    user,
+    pagination
     //这里是我自己理解的是为了给全局变量分组，所以需要写提前声明其他store文件，然后引入这里
   }
 });

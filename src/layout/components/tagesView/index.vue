@@ -40,8 +40,7 @@ export default {
     initTagData() {
       const tags = this.visitedViews;
       if (tags.some((e) => e.path === "/home")) {
-        this.$store.dispatch("addView", $route);
-        debugger;
+        this.$store.dispatch("addView", this.$route);
       } else {
         const initData = {
           path: "/home",
@@ -76,7 +75,7 @@ export default {
 };
 </script>
 
-<style  scoped lang="less">
+<style  scoped lang="scss">
 .tags {
   display: flex;
   flex-direction: row;
